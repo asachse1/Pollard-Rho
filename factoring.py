@@ -48,7 +48,7 @@ def PollardRhoEquation(x, n, c):
 def main():
 
     #n = mpz(input("Please enter the modulus: "))
-    n = mpz(45016778422508551131998204016196369)
+    n = mpz(1335043598292829133356872361228691)
     
     p = PollardRho(n)
     q = mpz(n / p)
