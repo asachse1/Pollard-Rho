@@ -48,12 +48,13 @@ def PollardRhoEquation(x, n, c):
 def main():
 
     #n = mpz(input("Please enter the modulus: "))
-    n = mpz(132095293493487309427624983656396500488439)
+    n = mpz(652243535612233745035658266868213)
     
+    print("\n*** MODULUS *** : ", n)
     p = PollardRho(n)
     q = mpz(n / p)
 
-    print("\n*** MODULUS *** : ", n)
+
     if(p != -1):
         print("One Factor is: ", end = '')
         print(p)
