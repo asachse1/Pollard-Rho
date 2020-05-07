@@ -23,15 +23,20 @@ def PollardRho(n):
     p = 1
 
     while (True):
-        
+        #step for the normal "runner" number
         x = PollardRhoEquation(x, n, c)
+
+        #double step for second "runner" number
         y = PollardRhoEquation(y, n, c)
         y = PollardRhoEquation(y, n, c)
 
         p = gcd(abs(y - x), n)
         
+        #Found a Factor
         if (p > 1):
             return p
+
+        #No Factors with these random variables
         if(p == n):
             return PollardRho(n)
         if (x == y):
@@ -41,6 +46,7 @@ def PollardRho(n):
     return (-1)
 
 def PollardRhoEquation(x, n, c):
+    #(x^2 + c)mod n
     x = (powmod(x, 2, n) + c + n) % n
 
     return x
@@ -48,21 +54,23 @@ def PollardRhoEquation(x, n, c):
 def main():
 
     n = mpz(input("Please enter the modulus: "))
-    #n = mpz(132095293493487309427624983656396500488439)
+
     
     print("\n*** MODULUS *** : ", n)
     p = PollardRho(n)
     q = mpz(n / p)
 
-
+    #Found Factors
     if(p != -1):
         print("One Factor is: ", end = '')
         print(p)
 
         print("The next Factor is: ", end = '')
         print(q)
+    #No Factors Found (Impossible to reach the else statement)
     else:
         print("No factors Found")
+    #Runtime statement
     print("--- %s seconds ---" % (time.time() - start_time), end = "\n\n")
 
 
